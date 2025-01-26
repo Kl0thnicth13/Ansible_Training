@@ -1,0 +1,20 @@
+---
+
+- name: "To create Banner for Cisco devices"
+  hosts: all
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: "Banner Configuration"
+      nxos_banner:
+        banner: exec
+        text: |
+          Don't fucken mess with the 
+          goddamn NXOS device motherfucker
+        state: present
+      register: my_banner
+
+    - debug: var=my_banner
+
+
